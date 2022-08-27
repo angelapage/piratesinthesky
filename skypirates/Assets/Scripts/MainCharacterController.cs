@@ -10,6 +10,13 @@ public class MainCharacterController : MonoBehaviour
     float horizontal;
 
     public float speed;
+    [SerializeField]
+    private float bounce;
+    
+// NOT actual gravity values, just multiplers. 
+    private float defaultGravity = 1;
+    [SerializeField]
+    private float increaseGravity;
     private int lives = 3;
 
     public Text livesText;
@@ -19,6 +26,8 @@ public class MainCharacterController : MonoBehaviour
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
+        rd2d.gravityScale = defaultGravity;
+
         livesText.text = "Lives: " + lives.ToString();
         scoreText.text = "Score: " + score.ToString();
     }
@@ -31,14 +40,21 @@ public class MainCharacterController : MonoBehaviour
         {
             SceneManager.LoadScene(4);
         } 
+
+        FastFalling();
     }
 
     void FixedUpdate()
     {
-        Vector2 position = rd2d.position;
+        //Changed movement code since it conflicted with the bounce mechanic. 
+
+        /*Vector2 position = rd2d.position;
         position.x = position.x + 3.0f * horizontal * Time.deltaTime;
 
-        rd2d.MovePosition(position);
+        rd2d.MovePosition(position); */
+
+        rd2d.velocity = new Vector2(horizontal * speed, rd2d.velocity.y);
+        //FastFalling();
     }
 
      private void OnCollisionEnter2D(Collision2D collision)
@@ -60,7 +76,22 @@ public class MainCharacterController : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
+            rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
             Destroy(collision.collider.gameObject);
+        }
+    }
+
+    private void FastFalling()
+    {
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            rd2d.gravityScale = increaseGravity;
+            Debug.Log("Increasing Gravity");
+        }
+        if(Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            rd2d.gravityScale = defaultGravity;
+             Debug.Log("Stopped increasing Gravity");
         }
     }
 }
