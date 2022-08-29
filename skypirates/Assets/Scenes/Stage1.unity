@@ -3116,7 +3116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3657998057724351493, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: increaseGravity
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3657998057724351493, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: increasedGravity
@@ -3168,7 +3168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6175378347025677432, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: m_GravityScale
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}

@@ -8,6 +8,7 @@ public class MainCharacterController : MonoBehaviour
 {
     private Rigidbody2D rd2d;
     float horizontal;
+    float vertical;
 
     public float speed;
     [SerializeField]
@@ -23,6 +24,8 @@ public class MainCharacterController : MonoBehaviour
     public Text scoreText;
     private int score = 0;
 
+
+
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
@@ -35,6 +38,7 @@ public class MainCharacterController : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
+        vertical = rd2d.velocity.y;
 
          if (lives <= 0)
         {
@@ -42,6 +46,7 @@ public class MainCharacterController : MonoBehaviour
         } 
 
         FastFalling();
+       
     }
 
     void FixedUpdate()
@@ -53,8 +58,8 @@ public class MainCharacterController : MonoBehaviour
 
         rd2d.MovePosition(position); */
 
-        rd2d.velocity = new Vector2(horizontal * speed, rd2d.velocity.y);
-        //FastFalling();
+        rd2d.velocity = new Vector2(horizontal * speed, vertical);
+        
     }
 
      private void OnCollisionEnter2D(Collision2D collision)
@@ -85,12 +90,16 @@ public class MainCharacterController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            rd2d.gravityScale = increaseGravity;
+             vertical = vertical * 2;
+
+            //rd2d.AddForce(-transform.up * bounce, ForceMode2D.Impulse);
+            //rd2d.gravityScale = increaseGravity;
             Debug.Log("Increasing Gravity");
         }
-        if(Input.GetKeyUp(KeyCode.DownArrow))
+       if(Input.GetKeyUp(KeyCode.DownArrow))
         {
-            rd2d.gravityScale = defaultGravity;
+            vertical = vertical / 2;
+            //rd2d.gravityScale = defaultGravity;
              Debug.Log("Stopped increasing Gravity");
         }
     }
