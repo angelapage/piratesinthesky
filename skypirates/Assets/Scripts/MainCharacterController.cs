@@ -23,7 +23,6 @@ public class MainCharacterController : MonoBehaviour
     AudioSource audioSource;
     public AudioClip pickup;
     public AudioClip bubblepop;
-    private Animator animator;
 
     public Text livesText;
     public Text scoreText;
@@ -35,7 +34,6 @@ public class MainCharacterController : MonoBehaviour
         rd2d.gravityScale = defaultGravity;
 
         audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
 
         livesText.text = "Lives: " + lives.ToString();
         scoreText.text = "Score: " + score.ToString();
