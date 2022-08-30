@@ -20,16 +20,22 @@ public class MainCharacterController : MonoBehaviour
     private float increaseGravity;
     private int lives = 3;
 
+    AudioSource audioSource;
+    public AudioClip pickup;
+    public AudioClip bubblepop;
+    private Animator animator;
+
     public Text livesText;
     public Text scoreText;
     private int score = 0;
-
-
 
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
         rd2d.gravityScale = defaultGravity;
+
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
         livesText.text = "Lives: " + lives.ToString();
         scoreText.text = "Score: " + score.ToString();
@@ -40,13 +46,7 @@ public class MainCharacterController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = rd2d.velocity.y;
 
-         if (lives <= 0)
-        {
-            SceneManager.LoadScene(4);
-        } 
-
-        FastFalling();
-       
+        FastFalling();    
     }
 
     void FixedUpdate()
@@ -58,22 +58,22 @@ public class MainCharacterController : MonoBehaviour
 
         rd2d.MovePosition(position); */
 
-        rd2d.velocity = new Vector2(horizontal * speed, vertical);
-        
+        rd2d.velocity = new Vector2(horizontal * speed, vertical);       
     }
 
      private void OnCollisionEnter2D(Collision2D collision)
     {
        if (collision.collider.tag == "Pearl")
         {
-            score += 1;
+            PlaySound(pickup);
+            score += 100;
             scoreText.text = "Score" + score.ToString();
             Destroy(collision.collider.gameObject);
         }
 
         if (collision.collider.tag == "Ground")
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -81,6 +81,9 @@ public class MainCharacterController : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
+            PlaySound(bubblepop);
+            score += 50;
+            scoreText.text = "Score" + score.ToString();
             rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
             Destroy(collision.collider.gameObject);
         }
@@ -102,5 +105,10 @@ public class MainCharacterController : MonoBehaviour
             //rd2d.gravityScale = defaultGravity;
              Debug.Log("Stopped increasing Gravity");
         }
+    }
+
+     public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
