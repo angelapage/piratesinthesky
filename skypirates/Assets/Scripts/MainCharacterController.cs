@@ -80,9 +80,14 @@ public class MainCharacterController : MonoBehaviour
             Destroy(collision.collider.gameObject);
         }
 
-        if (collision.collider.tag == "Ground")
+        if (collision.collider.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 1)
         {
             SceneManager.LoadScene(2);
+        }
+
+        if (collision.collider.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -92,9 +97,10 @@ public class MainCharacterController : MonoBehaviour
         {
             lives -= 1;
             livesText.text = "Lives: " + lives.ToString();
+
             if (lives <= 0)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(1);
             }
 
             BounceUp();
