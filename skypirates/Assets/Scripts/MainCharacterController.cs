@@ -80,10 +80,17 @@ public class MainCharacterController : MonoBehaviour
         if (collision.collider.tag == "Enemy")
         {
             PlaySound(bubblepop);
-            score += 50;
-            scoreText.text = "Score" + score.ToString();
+            lives -= 1;
+            livesText.text = "Lives: " + lives.ToString();
+            // score += 50;
+            // scoreText.text = "Score" + score.ToString();
             rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
             Destroy(collision.collider.gameObject);
+
+            if(lives <= 0)
+            {
+                GameOver();
+            }
         }
     }
 
@@ -109,4 +116,12 @@ public class MainCharacterController : MonoBehaviour
     {
         audioSource.PlayOneShot(clip);
     }
+     
+     private void GameOver()
+    {
+        if(lives == 0)
+        {
+            SceneManager.LoadScene(2);
+        }
+    } 
 }
