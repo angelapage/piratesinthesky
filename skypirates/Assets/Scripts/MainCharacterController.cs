@@ -119,7 +119,7 @@ public class MainCharacterController : MonoBehaviour
      
      private void GameOver()
     {
-        if(lives == 0)
+        if(lives <= 0)
         {
             SceneManager.LoadScene(2);
         }
