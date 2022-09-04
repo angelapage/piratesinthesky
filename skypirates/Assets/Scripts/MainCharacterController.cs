@@ -26,7 +26,9 @@ public class MainCharacterController : MonoBehaviour
 
     public Text livesText;
     public Text scoreText;
-    private int score = 0;
+    public static int score = 0;
+
+    public GameObject HitBox;
 
     void Start()
     {
@@ -43,6 +45,15 @@ public class MainCharacterController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = rd2d.velocity.y;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HitBox.SetActive(true);
+
+            AttackHitBox a = GetComponentInChildren<AttackHitBox>();
+
+            a.Attack();
+        }
 
         FastFalling();    
     }
@@ -79,18 +90,18 @@ public class MainCharacterController : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
-            PlaySound(bubblepop);
             lives -= 1;
             livesText.text = "Lives: " + lives.ToString();
+            if (lives <= 0)
+            {
+                SceneManager.LoadScene(2);
+            }
+
+            BounceUp();
+            PlaySound(bubblepop);
+
             // score += 50;
             // scoreText.text = "Score" + score.ToString();
-            rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
-            Destroy(collision.collider.gameObject);
-
-            if(lives <= 0)
-            {
-                GameOver();
-            }
         }
     }
 
@@ -117,11 +128,8 @@ public class MainCharacterController : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
      
-     private void GameOver()
+    public void BounceUp()
     {
-        if(lives <= 0)
-        {
-            SceneManager.LoadScene(2);
-        }
-    } 
+        rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
+    }
 }
