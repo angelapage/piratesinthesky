@@ -30,6 +30,10 @@ public class MainCharacterController : MonoBehaviour
 
     public GameObject HitBox;
 
+    float invincibleTimer;
+    float timeInvincible = 2;
+    bool isInvincible;
+
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
@@ -53,6 +57,15 @@ public class MainCharacterController : MonoBehaviour
             AttackHitBox a = GetComponentInChildren<AttackHitBox>();
 
             a.Attack();
+        }
+
+        if (isInvincible == true)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
+            }
         }
 
         FastFalling();    
@@ -95,19 +108,25 @@ public class MainCharacterController : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
-            lives -= 1;
-            livesText.text = "Lives: " + lives.ToString();
-
-            if (lives <= 0)
+            if (isInvincible == false)
             {
-                SceneManager.LoadScene(1);
+                lives -= 1;
+                livesText.text = "Lives: " + lives.ToString();
+
+                isInvincible = true;
+                invincibleTimer = timeInvincible;
+
+                if (lives <= 0)
+                {
+                    SceneManager.LoadScene(1);
+                }
+                
+                // score += 50;
+                // scoreText.text = "Score" + score.ToString();
             }
 
             BounceUp();
             PlaySound(bubblepop);
-
-            // score += 50;
-            // scoreText.text = "Score" + score.ToString();
         }
     }
 
