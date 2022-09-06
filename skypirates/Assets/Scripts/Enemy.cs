@@ -6,13 +6,17 @@ public class Enemy : MonoBehaviour
 {
     float health = 100;
 
-    // Start is called before the first frame update
+    private MainCharacterController mainCharacterController;
+
     void Start()
     {
-        
+        GameObject mainCharacterControllerObject = GameObject.FindWithTag("MainCharacterController");
+        if (mainCharacterControllerObject != null)
+        {
+            mainCharacterController = mainCharacterControllerObject.GetComponent<MainCharacterController>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -25,6 +29,11 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+
+            if (mainCharacterController != null)
+            {
+                mainCharacterController.ChangeScore(50);
+            }
         }
     }
 }

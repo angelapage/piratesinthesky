@@ -102,10 +102,7 @@ public class MainCharacterController : MonoBehaviour
         {
             SceneManager.LoadScene(3);
         }
-    }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
         if (collision.collider.tag == "Enemy")
         {
             if (isInvincible == false)
@@ -119,6 +116,7 @@ public class MainCharacterController : MonoBehaviour
                 if (lives <= 0)
                 {
                     SceneManager.LoadScene(1);
+                    score = 0;
                 }
                 
                 // score += 50;
@@ -128,6 +126,12 @@ public class MainCharacterController : MonoBehaviour
             BounceUp();
             PlaySound(bubblepop);
         }
+    }
+
+    public void ChangeScore(int scoreAmount)
+    {
+        score += 50;
+        scoreText.text = "Score: " + score.ToString();
     }
 
     private void FastFalling()
