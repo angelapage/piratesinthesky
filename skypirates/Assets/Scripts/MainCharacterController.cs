@@ -85,6 +85,7 @@ public class MainCharacterController : MonoBehaviour
 
      private void OnCollisionEnter2D(Collision2D collision)
     {
+
        if (collision.collider.tag == "Pearl")
         {
             PlaySound(pickup);
@@ -103,6 +104,12 @@ public class MainCharacterController : MonoBehaviour
             SceneManager.LoadScene(3);
         }
 
+         if (collision.collider.tag == "camerabox")
+        {
+            SceneManager.LoadScene(1);
+             score = 0;
+        }
+
         if (collision.collider.tag == "Enemy")
         {
             if (isInvincible == false)
@@ -118,9 +125,6 @@ public class MainCharacterController : MonoBehaviour
                     SceneManager.LoadScene(1);
                     score = 0;
                 }
-                
-                // score += 50;
-                // scoreText.text = "Score" + score.ToString();
             }
 
             BounceUp();
