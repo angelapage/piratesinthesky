@@ -54,7 +54,7 @@ public class MainCharacterController : MonoBehaviour
         {
             HitBox.SetActive(true);
 
-            AttackHitBox a = GetComponentInChildren<AttackHitBox>();
+            HitBoxAttack a = GetComponentInChildren<HitBoxAttack>();
 
             a.Attack();
         }
@@ -83,34 +83,33 @@ public class MainCharacterController : MonoBehaviour
         rd2d.velocity = new Vector2(horizontal * speed, vertical);       
     }
 
-     private void OnCollisionEnter2D(Collision2D collision)
+    public void ProcessCollision(GameObject collision)
     {
-
-       if (collision.collider.tag == "Pearl")
+        if (collision.tag == "Pearl")
         {
             PlaySound(pickup);
             score += 100;
             scoreText.text = "Score" + score.ToString();
-            Destroy(collision.collider.gameObject);
+            Destroy(collision.gameObject);
         }
 
-        if (collision.collider.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 1)
+        if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 1)
         {
             SceneManager.LoadScene(2);
         }
 
-        if (collision.collider.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 2)
+        if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 2)
         {
             SceneManager.LoadScene(3);
         }
 
-         if (collision.collider.tag == "camerabox")
+        if (collision.tag == "camerabox")
         {
             SceneManager.LoadScene(1);
-             score = 0;
+            score = 0;
         }
 
-        if (collision.collider.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
             if (isInvincible == false)
             {
@@ -134,7 +133,7 @@ public class MainCharacterController : MonoBehaviour
 
     public void ChangeScore(int scoreAmount)
     {
-        score += 50;
+        score += scoreAmount;
         scoreText.text = "Score: " + score.ToString();
     }
 
@@ -148,7 +147,7 @@ public class MainCharacterController : MonoBehaviour
             //rd2d.gravityScale = increaseGravity;
             Debug.Log("Increasing Gravity");
         }
-       if(Input.GetKeyUp(KeyCode.DownArrow))
+        if(Input.GetKeyUp(KeyCode.DownArrow))
         {
             vertical = vertical / 2;
             //rd2d.gravityScale = defaultGravity;
@@ -156,7 +155,7 @@ public class MainCharacterController : MonoBehaviour
         }
     }
 
-     public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
     }

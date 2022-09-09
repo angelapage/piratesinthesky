@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitBoxAttack : MonoBehaviour
+public class AttackHitBox : MonoBehaviour
 {
     public GameObject Self;
 
