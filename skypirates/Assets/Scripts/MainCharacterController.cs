@@ -103,12 +103,6 @@ public class MainCharacterController : MonoBehaviour
             SceneManager.LoadScene(3);
         }
 
-        if (collision.tag == "camerabox")
-        {
-            SceneManager.LoadScene(1);
-            score = 0;
-        }
-
         if (collision.tag == "Enemy")
         {
             if (isInvincible == false)
