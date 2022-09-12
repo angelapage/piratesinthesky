@@ -13,6 +13,8 @@ public class MainCharacterController : MonoBehaviour
     public float speed;
     [SerializeField]
     private float bounce;
+    public float stagger;
+    private bool left;
     
 // NOT actual gravity values, just multiplers. 
     private float defaultGravity = 1;
@@ -33,6 +35,7 @@ public class MainCharacterController : MonoBehaviour
     float invincibleTimer;
     float timeInvincible = 2;
     bool isInvincible;
+    public bool attacking;
 
     void Start()
     {
@@ -57,6 +60,8 @@ public class MainCharacterController : MonoBehaviour
             HitBoxAttack a = GetComponentInChildren<HitBoxAttack>();
 
             a.Attack();
+            attacking = true;
+
         }
 
         if (isInvincible == true)
@@ -85,13 +90,7 @@ public class MainCharacterController : MonoBehaviour
 
     public void ProcessCollision(GameObject collision)
     {
-        if (collision.tag == "Pearl")
-        {
-            PlaySound(pickup);
-            score += 100;
-            scoreText.text = "Score" + score.ToString();
-            Destroy(collision.gameObject);
-        }
+       
 
         if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -103,16 +102,30 @@ public class MainCharacterController : MonoBehaviour
             SceneManager.LoadScene(3);
         }
 
-        if (collision.tag == "Enemy")
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+{
+     if (collision.tag == "Pearl")
+        {
+            PlaySound(pickup);
+            score += 100;
+            scoreText.text = "Score" + score.ToString();
+            Destroy(collision.gameObject);
+        }
+    if (collision.tag == "Enemy")
         {
             if (isInvincible == false)
             {
+            if (attacking == false)
+            {
                 lives -= 1;
                 livesText.text = "Lives: " + lives.ToString();
+                rd2d.velocity = new Vector2(horizontal, vertical + stagger);
 
                 isInvincible = true;
                 invincibleTimer = timeInvincible;
-
                 if (lives <= 0)
                 {
                     SceneManager.LoadScene(1);
@@ -120,10 +133,12 @@ public class MainCharacterController : MonoBehaviour
                 }
             }
 
-            BounceUp();
+            }
+
+            
             PlaySound(bubblepop);
         }
-    }
+}
 
     public void ChangeScore(int scoreAmount)
     {
@@ -157,5 +172,11 @@ public class MainCharacterController : MonoBehaviour
     public void BounceUp()
     {
         rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
+        Debug.Log("boing");
+
+    }
+    public void endattack()
+    {
+        attacking = false;
     }
 }

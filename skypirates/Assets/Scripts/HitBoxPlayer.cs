@@ -22,4 +22,6 @@ public class HitBoxPlayer : MonoBehaviour
 
         c.ProcessCollision(other.gameObject);
     }
+
+    
 }

@@ -33,7 +33,27 @@ public class HitBoxAttack : MonoBehaviour
             c.BounceUp();
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        Enemy e = other.GetComponent<Enemy>();
+        HitPoint h = other.GetComponent<HitPoint>();
+        MainCharacterController c = GetComponentInParent<MainCharacterController>();
 
+        if (e != null)
+        {
+            e.Damaged();
+            c.BounceUp();
+        }
+        if (h != null)
+        {
+            h.DealDamage();
+            c.BounceUp();
+        }
+     
+
+    }
     public void Attack()
     {
         StartCoroutine("DeactivateHitBox");
@@ -41,9 +61,11 @@ public class HitBoxAttack : MonoBehaviour
 
     IEnumerator DeactivateHitBox()
     {
+        MainCharacterController c = GetComponentInParent<MainCharacterController>();
         while (true)
         {
             yield return new WaitForSeconds(1);
+            c.endattack();
             Self.SetActive(false);
         }
     }
