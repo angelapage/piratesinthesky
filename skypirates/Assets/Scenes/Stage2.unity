@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
   m_BoundingShape2D: {fileID: 1255102462}
-  m_ConfineScreenEdges: 1
+  m_ConfineScreenEdges: 0
   m_Damping: 0
 --- !u!114 &1542823875
 MonoBehaviour:
@@ -2737,7 +2737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604974122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.023889732, y: 1.8057337, z: -10}
+  m_LocalPosition: {x: 0.05, y: 1.9062002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
