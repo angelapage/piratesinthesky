@@ -611,7 +611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.049999047, y: 1.8468003, z: -10}
+  m_LocalPosition: {x: 0.05, y: 1.8468003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -651,25 +651,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &609435454 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6775379244740075173, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-  m_PrefabInstance: {fileID: 6775379245134101382}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &609435460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609435454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2be94190d88f244b9d903261771ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  livesText: {fileID: 1167373348}
-  lives: 3
 --- !u!1001 &621082504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2350,7 +2331,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684968805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.049999047, y: 1.8468003, z: -10}
+  m_LocalPosition: {x: 0.05, y: 1.8468003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 127532936}
@@ -3486,11 +3467,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: bounce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
+    - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: livesText
       value: 
       objectReference: {fileID: 1167373348}
@@ -3498,22 +3475,6 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1865842919}
-    - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: increaseGravity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775379244740075170, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775379244740075170, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Color.g
-      value: 0.13494039
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775379244740075170, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6775379244740075171, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: m_RootOrder
       value: 2

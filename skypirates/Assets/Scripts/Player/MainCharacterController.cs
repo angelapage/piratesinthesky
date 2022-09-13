@@ -92,7 +92,12 @@ public class MainCharacterController : MonoBehaviour
         if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 2)
         {
             SceneManager.LoadScene(3);
-        }        
+        }  
+
+         if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            SceneManager.LoadScene(4);
+        }              
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
