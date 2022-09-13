@@ -20,13 +20,12 @@ public class MainCharacterController : MonoBehaviour
     private float defaultGravity = 1;
     [SerializeField]
     private float increaseGravity;
-    private int lives = 3;
-
+    
     AudioSource audioSource;
     public AudioClip pickup;
     public AudioClip bubblepop;
 
-    public Text livesText;
+
     public Text scoreText;
     public static int score = 0;
 
@@ -37,14 +36,16 @@ public class MainCharacterController : MonoBehaviour
     bool isInvincible;
     public bool attacking;
 
+    protected Health health;
+
     void Start()
     {
+        health = GetComponent<Health>();
         rd2d = GetComponent<Rigidbody2D>();
         rd2d.gravityScale = defaultGravity;
 
         audioSource = GetComponent<AudioSource>();
 
-        livesText.text = "Lives: " + lives.ToString();
         scoreText.text = "Score: " + score.ToString();
     }
 
@@ -114,23 +115,21 @@ public class MainCharacterController : MonoBehaviour
             scoreText.text = "Score" + score.ToString();
             Destroy(collision.gameObject);
         }
+
+       
     if (collision.tag == "Enemy")
         {
             if (isInvincible == false)
             {
             if (attacking == false)
             {
-                lives -= 1;
-                livesText.text = "Lives: " + lives.ToString();
+                health.ChangeHealth(-1); 
+
                 rd2d.velocity = new Vector2(horizontal, vertical + stagger);
 
                 isInvincible = true;
                 invincibleTimer = timeInvincible;
-                if (lives <= 0)
-                {
-                    SceneManager.LoadScene(1);
-                    score = 0;
-                }
+               
             }
 
             }
