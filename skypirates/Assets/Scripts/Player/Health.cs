@@ -13,7 +13,15 @@ public class Health : MonoBehaviour
     [SerializeField]
     public Sprite fullHeart, emptyHeart;
 
+    private Animator animator;
 
+    public GameObject healthBar;
+
+    void Start()
+    {   
+
+        animator = healthBar.GetComponent<Animator>();
+    }
     void Update()
     {
 
@@ -46,6 +54,7 @@ public class Health : MonoBehaviour
     {
         lives = lives + amount;
         
+        animator.SetTrigger("IsDamaged");
 
         if (lives <= 0)
                 {
