@@ -79,20 +79,11 @@ public class MainCharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Changed movement code since it conflicted with the bounce mechanic. 
-
-        /*Vector2 position = rd2d.position;
-        position.x = position.x + 3.0f * horizontal * Time.deltaTime;
-
-        rd2d.MovePosition(position); */
-
         rd2d.velocity = new Vector2(horizontal * speed, vertical);       
     }
 
     public void ProcessCollision(GameObject collision)
-    {
-       
-
+    {   
         if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 1)
         {
             SceneManager.LoadScene(2);
@@ -101,9 +92,7 @@ public class MainCharacterController : MonoBehaviour
         if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 2)
         {
             SceneManager.LoadScene(3);
-        }
-
-        
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -115,26 +104,22 @@ public class MainCharacterController : MonoBehaviour
             scoreText.text = "Score" + score.ToString();
             Destroy(collision.gameObject);
         }
-
-       
+     
     if (collision.tag == "Enemy")
         {
             if (isInvincible == false)
             {
-            if (attacking == false)
-            {
-                health.ChangeHealth(-1); 
+                if (attacking == false)
+                {
+                    health.ChangeHealth(-1); 
 
-                rd2d.velocity = new Vector2(horizontal, vertical + stagger);
+                    rd2d.velocity = new Vector2(horizontal, vertical + stagger);
 
-                isInvincible = true;
-                invincibleTimer = timeInvincible;
-               
+                    isInvincible = true;
+                    invincibleTimer = timeInvincible;               
+                }
             }
 
-            }
-
-            
             PlaySound(bubblepop);
         }
 }
@@ -155,6 +140,7 @@ public class MainCharacterController : MonoBehaviour
             //rd2d.gravityScale = increaseGravity;
             Debug.Log("Increasing Gravity");
         }
+
         if(Input.GetKeyUp(KeyCode.DownArrow))
         {
             vertical = vertical / 2;
@@ -171,8 +157,6 @@ public class MainCharacterController : MonoBehaviour
     public void BounceUp()
     {
         rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
-        Debug.Log("boing");
-
     }
     public void endattack()
     {

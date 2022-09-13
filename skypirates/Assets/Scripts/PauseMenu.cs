@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
 
             AudioListener.pause = true;
         }    
+        
         else if((Input.GetKeyDown(KeyCode.E)) && isPaused)
         {
             pauseMenu.SetActive(false);
