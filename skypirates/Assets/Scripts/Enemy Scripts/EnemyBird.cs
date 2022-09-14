@@ -6,7 +6,7 @@ public class EnemyBird : Enemy
 {
     Rigidbody2D rigid;
     float directionTimer;
-    float newTime = 5;
+    float newTime = 3;
     public int direction = 1;
     public float speed = 8;
     
