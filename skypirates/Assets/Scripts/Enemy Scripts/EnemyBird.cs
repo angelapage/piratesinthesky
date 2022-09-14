@@ -7,8 +7,8 @@ public class EnemyBird : Enemy
     Rigidbody2D rigid;
     float directionTimer;
     float newTime = 5;
-    int direction = 1;
-    float speed = 3;
+    public int direction = 1;
+    public float speed = 8;
     
     // Start is called before the first frame update
     void Start()
