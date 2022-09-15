@@ -16,12 +16,10 @@ public class HitBoxPlayer : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         MainCharacterController c = GetComponentInParent<MainCharacterController>();
 
-        c.ProcessCollision(other.gameObject);
+        c.ProcessCollision(collision.gameObject);
     }
-
-    
 }

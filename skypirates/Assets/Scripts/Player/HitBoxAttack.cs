@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitBoxAttack : MonoBehaviour
 {
     public GameObject Self;
+    float activeTimer = 1f;
 
     void Start()
     {
@@ -13,24 +14,12 @@ public class HitBoxAttack : MonoBehaviour
 
     void Update()
     {
-        
-    }
-    
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Enemy e = other.collider.GetComponent<Enemy>();
-        HitPoint h = other.collider.GetComponent<HitPoint>();
-        MainCharacterController c = GetComponentInParent<MainCharacterController>();
-
-        if (e != null)
+        activeTimer -= Time.deltaTime;
+        if (activeTimer <= 0)
         {
-            e.Damaged();
-            c.BounceUp();
-        }
-        if (h != null)
-        {
-            h.DealDamage();
-            c.BounceUp();
+            MainCharacterController c = GetComponentInParent<MainCharacterController>();
+            c.endattack();
+            Self.SetActive(false);
         }
     }
     
@@ -46,28 +35,15 @@ public class HitBoxAttack : MonoBehaviour
             e.Damaged();
             c.BounceUp();
         }
+        
         if (h != null)
         {
             h.DealDamage();
             c.BounceUp();
         }
-     
-
     }
     public void Attack()
     {
-        StartCoroutine("DeactivateHitBox");
+        activeTimer = 1f;
     }
-
-    IEnumerator DeactivateHitBox()
-    {
-        MainCharacterController c = GetComponentInParent<MainCharacterController>();
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            c.endattack();
-            Self.SetActive(false);
-        }
-    }
-
 }

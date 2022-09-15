@@ -227,6 +227,7 @@ MonoBehaviour:
   bounce: 10
   stagger: 0
   increaseGravity: 0.5
+  maxVelocity: 20
   pickup: {fileID: 8300000, guid: a80c96796aa484449b01df02aa1233c1, type: 3}
   bubblepop: {fileID: 8300000, guid: 7cab1f7ccd33c7c4896deda3a8184503, type: 3}
   scoreText: {fileID: 0}

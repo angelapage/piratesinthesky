@@ -21,6 +21,8 @@ public class MainCharacterController : MonoBehaviour
     private float defaultGravity = 1;
     [SerializeField]
     private float increaseGravity;
+    [SerializeField]
+    private float maxVelocity = 20;
     
     AudioSource audioSource;
     public AudioClip pickup;
@@ -33,7 +35,7 @@ public class MainCharacterController : MonoBehaviour
     public GameObject HitBox;
 
     float invincibleTimer;
-    float timeInvincible = 2;
+    float timeInvincible = 1;
     bool isInvincible;
     public bool attacking;
 
@@ -76,56 +78,61 @@ public class MainCharacterController : MonoBehaviour
         if (isInvincible == true)
         {
             invincibleTimer -= Time.deltaTime;
-            if (invincibleTimer < 0)
+            if (invincibleTimer <= 0)
             {
                 isInvincible = false;
             }
         }
 
-        FastFalling();    
+        FastFalling();
+
     }
 
     void FixedUpdate()
     {
-        rd2d.velocity = new Vector2(horizontal * speed, vertical);       
-    }
-
-    public void ProcessCollision(GameObject collision)
-    {   
-        if (collision.tag == "Ground")
-        {
-            _levelLoader.LoadNextLevel();
-        }            
+        rd2d.velocity = new Vector2(horizontal * speed, vertical);
+        rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-{
-     if (collision.tag == "Pearl")
+    {
+        ProcessCollision(collision.gameObject);
+    }
+
+    public void ProcessCollision(GameObject collision)
+    {
+        if (collision.tag == "Ground")
+        {
+            _levelLoader.LoadNextLevel();
+        }
+
+        if (collision.tag == "Pearl")
         {
             PlaySound(pickup);
             score += 100;
             scoreText.text = "Score" + score.ToString();
             Destroy(collision.gameObject);
         }
-     
-    if (collision.tag == "Enemy")
+
+        if (collision.tag == "Enemy")
         {
             if (isInvincible == false)
             {
                 if (attacking == false)
                 {
-                    health.ChangeHealth(-1); 
+                    health.ChangeHealth(-1);
 
                     rd2d.velocity = new Vector2(horizontal, vertical + stagger);
 
                     isInvincible = true;
-                    invincibleTimer = timeInvincible;               
+                    invincibleTimer = timeInvincible;
                 }
             }
 
             PlaySound(bubblepop);
-        }
-}
+
+        } 
+    }
 
     public void ChangeScore(int scoreAmount)
     {
@@ -161,6 +168,7 @@ public class MainCharacterController : MonoBehaviour
     {
         rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
     }
+
     public void endattack()
     {
         attacking = false;
