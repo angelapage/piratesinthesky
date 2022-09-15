@@ -106,6 +106,7 @@ public class MainCharacterController : MonoBehaviour
 
     public void ProcessCollision(GameObject collision)
     {
+
         if (collision.tag == "Ground")
         {
             _levelLoader.LoadNextLevel();

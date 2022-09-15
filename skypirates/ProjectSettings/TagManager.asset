@@ -9,6 +9,7 @@ TagManager:
   - Pearl
   - MainCharacterController
   - camerabox
+  - Bumper
   layers:
   - Default
   - TransparentFX
