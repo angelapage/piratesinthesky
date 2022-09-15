@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class MainCharacterController : MonoBehaviour
 {
     private Rigidbody2D rd2d;
@@ -37,11 +38,13 @@ public class MainCharacterController : MonoBehaviour
     public bool attacking;
 
     protected Health health;
-
+    
     void Start()
     {
         health = GetComponent<Health>();
         rd2d = GetComponent<Rigidbody2D>();
+
+
         rd2d.gravityScale = defaultGravity;
 
         audioSource = GetComponent<AudioSource>();
@@ -82,22 +85,13 @@ public class MainCharacterController : MonoBehaviour
         rd2d.velocity = new Vector2(horizontal * speed, vertical);       
     }
 
+    //LevelLoader levelLoader;
     public void ProcessCollision(GameObject collision)
     {   
-        if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 1)
+        if (collision.tag == "Ground")
         {
-            SceneManager.LoadScene(2);
-        }
-
-        if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            SceneManager.LoadScene(3);
-        }  
-
-         if (collision.tag == "Ground" && SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            SceneManager.LoadScene(4);
-        }              
+            LevelLoader.LoadNextLevel();
+        }            
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
