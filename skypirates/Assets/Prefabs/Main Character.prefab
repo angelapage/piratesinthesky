@@ -232,6 +232,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   HitBox: {fileID: 8829138963014900475}
   attacking: 0
+  levelLoader: {fileID: 2815894074772417054, guid: 589e805daf7bb054193a3919455585df, type: 3}
 --- !u!50 &4140624174121580253
 Rigidbody2D:
   serializedVersion: 4

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 
 public class MainCharacterController : MonoBehaviour
@@ -38,13 +38,18 @@ public class MainCharacterController : MonoBehaviour
     public bool attacking;
 
     protected Health health;
+
+    public GameObject levelLoader;
+
+    private LevelLoader _levelLoader;
     
     void Start()
     {
         health = GetComponent<Health>();
         rd2d = GetComponent<Rigidbody2D>();
 
-
+        _levelLoader = levelLoader.GetComponent<LevelLoader>();
+        
         rd2d.gravityScale = defaultGravity;
 
         audioSource = GetComponent<AudioSource>();
@@ -85,12 +90,11 @@ public class MainCharacterController : MonoBehaviour
         rd2d.velocity = new Vector2(horizontal * speed, vertical);       
     }
 
-    //LevelLoader levelLoader;
     public void ProcessCollision(GameObject collision)
     {   
         if (collision.tag == "Ground")
         {
-            LevelLoader.LoadNextLevel();
+            _levelLoader.LoadNextLevel();
         }            
     }
 
