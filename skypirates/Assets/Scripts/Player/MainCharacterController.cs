@@ -98,6 +98,11 @@ public class MainCharacterController : MonoBehaviour
     {
         ProcessCollision(collision.gameObject);
     }
+    
+    private void OnCollisionEnter2D(Collider2D collision)
+    {
+        ProcessCollision(collision.gameObject);
+    }
 
     public void ProcessCollision(GameObject collision)
     {
