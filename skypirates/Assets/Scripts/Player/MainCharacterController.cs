@@ -23,6 +23,8 @@ public class MainCharacterController : MonoBehaviour
     private float increaseGravity;
     [SerializeField]
     private float maxVelocity = 20;
+    Vector2 lastVelocity;
+    ContactPoint2D objContact;
     
     AudioSource audioSource;
     public AudioClip pickup;
@@ -63,6 +65,7 @@ public class MainCharacterController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = rd2d.velocity.y;
+        lastVelocity = rd2d.velocity;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -99,13 +102,22 @@ public class MainCharacterController : MonoBehaviour
         ProcessCollision(collision.gameObject);
     }
     
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        ProcessCollision(collision.gameObject);
+        objContact = collision.GetContact(0);
+
+        ProcessCollision(collision.gameObject); 
     }
 
     public void ProcessCollision(GameObject collision)
     {
+        if (collision.tag == "Bumper")
+        {
+            var speed = lastVelocity.magnitude;
+            var direction = Vector2.Reflect(lastVelocity.normalized, objContact.normal);
+
+            rd2d.velocity = direction * Mathf.Max(10f, 5f);
+        }
 
         if (collision.tag == "Ground")
         {
