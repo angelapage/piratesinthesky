@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 936810630104368078}
   - component: {fileID: 9123403883631282411}
   - component: {fileID: 3604278611642889855}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitBoxPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1517dfc5db776d0458abd5954780852e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 7396676310359651681}
   - component: {fileID: 4045724287857705712}
   - component: {fileID: 6279163088837312354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HitBoxAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

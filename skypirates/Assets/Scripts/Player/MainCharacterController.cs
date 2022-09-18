@@ -39,6 +39,11 @@ public class MainCharacterController : MonoBehaviour
     float invincibleTimer;
     float timeInvincible = 1;
     bool isInvincible;
+
+    float disableInput;
+    float timeDisabled = 0.5f;
+    bool isDisabled;
+
     public bool attacking;
 
     protected Health health;
@@ -87,13 +92,26 @@ public class MainCharacterController : MonoBehaviour
             }
         }
 
+        if (isDisabled == true)
+        {
+            timeDisabled -= Time.deltaTime;
+            if (timeDisabled <= 0)
+            {
+                isDisabled = false;
+            }
+        }
+
         FastFalling();
 
     }
 
     void FixedUpdate()
     {
-        rd2d.velocity = new Vector2(horizontal * speed, vertical);
+        if (isDisabled == false)
+        {
+            rd2d.velocity = new Vector2(horizontal * speed, vertical);
+        }
+        
         rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
     }
 
@@ -104,8 +122,6 @@ public class MainCharacterController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        objContact = collision.GetContact(0);
-
         ProcessCollision(collision.gameObject); 
     }
 
@@ -113,10 +129,7 @@ public class MainCharacterController : MonoBehaviour
     {
         if (collision.tag == "Bumper")
         {
-            var speed = lastVelocity.magnitude;
-            var direction = Vector2.Reflect(lastVelocity.normalized, objContact.normal);
-
-            rd2d.velocity = direction * Mathf.Max(10f, 5f);
+            isDisabled = true;
         }
 
         if (collision.tag == "Ground")
