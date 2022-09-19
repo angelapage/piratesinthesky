@@ -5981,7 +5981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199c50ea2dcd2bb478dbfc13709338d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxMultiplier: 0.5
+  parallaxMultiplier: 0.56
 --- !u!212 &2033880289
 SpriteRenderer:
   m_ObjectHideFlags: 0

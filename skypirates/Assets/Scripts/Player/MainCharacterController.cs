@@ -51,6 +51,7 @@ public class MainCharacterController : MonoBehaviour
     public GameObject levelLoader;
 
     private LevelLoader _levelLoader;
+    bool boing;
     
     void Start()
     {
@@ -107,12 +108,15 @@ public class MainCharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (boing == false)
+        {
         if (isDisabled == false)
         {
             rd2d.velocity = new Vector2(horizontal * speed, vertical);
         }
         
         rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -197,7 +201,11 @@ public class MainCharacterController : MonoBehaviour
      
     public void BounceUp()
     {
+        boing = true;
+        Debug.Log("smack");
+        rd2d.velocity = new Vector2(0, 0); 
         rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
+        boing = false;
     }
 
     public void endattack()

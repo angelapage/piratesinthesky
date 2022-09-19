@@ -4236,6 +4236,7 @@ PolygonCollider2D:
       - {x: -17.544064, y: 4.0230823}
       - {x: -17.00667, y: -91.59824}
       - {x: -20.914623, y: -91.166725}
+      - {x: -17.036835, y: -91.40721}
       - {x: -0.22660112, y: -91.366005}
       - {x: -0.13476467, y: 3.8647583}
 --- !u!4 &2018253358
@@ -5059,10 +5060,6 @@ PrefabInstance:
       propertyPath: levelLoader
       value: 
       objectReference: {fileID: 1245662855}
-    - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: maxVelocity
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: startForce.x
       value: 3

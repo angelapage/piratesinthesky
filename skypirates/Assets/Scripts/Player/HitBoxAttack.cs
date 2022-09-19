@@ -32,8 +32,9 @@ public class HitBoxAttack : MonoBehaviour
 
         if (e != null)
         {
-            e.Damaged();
             c.BounceUp();
+            e.Damaged();
+            
         }
         
         if (h != null)
