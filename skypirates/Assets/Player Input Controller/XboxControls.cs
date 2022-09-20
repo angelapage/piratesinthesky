@@ -41,6 +41,14 @@ public class @XboxControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""FastFall"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab4f1afa-1b3d-4a52-adad-d14eb986c13e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -70,17 +78,6 @@ public class @XboxControls : IInputActionCollection, IDisposable
                     ""name"": ""up"",
                     ""id"": ""c09ecf0a-b434-484d-8175-e1e0cbb0c7e0"",
                     ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""13399202-8e22-4713-b306-3167921fae8e"",
-                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -153,6 +150,28 @@ public class @XboxControls : IInputActionCollection, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5216ffca-7663-4b99-9c21-a768558ed177"",
+                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FastFall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e07786d9-b61a-4e98-8bee-281f55d09159"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FastFall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +183,7 @@ public class @XboxControls : IInputActionCollection, IDisposable
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
         m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerMovement_FastFall = m_PlayerMovement.FindAction("FastFall", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -216,6 +236,7 @@ public class @XboxControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovement_Move;
     private readonly InputAction m_PlayerMovement_Attack;
     private readonly InputAction m_PlayerMovement_Pause;
+    private readonly InputAction m_PlayerMovement_FastFall;
     public struct PlayerMovementActions
     {
         private @XboxControls m_Wrapper;
@@ -223,6 +244,7 @@ public class @XboxControls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
+        public InputAction @FastFall => m_Wrapper.m_PlayerMovement_FastFall;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,6 +263,9 @@ public class @XboxControls : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnPause;
+                @FastFall.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnFastFall;
+                @FastFall.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnFastFall;
+                @FastFall.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnFastFall;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -254,6 +279,9 @@ public class @XboxControls : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @FastFall.started += instance.OnFastFall;
+                @FastFall.performed += instance.OnFastFall;
+                @FastFall.canceled += instance.OnFastFall;
             }
         }
     }
@@ -263,5 +291,6 @@ public class @XboxControls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnFastFall(InputAction.CallbackContext context);
     }
 }

@@ -114,7 +114,7 @@ public class MainCharacterController : MonoBehaviour
             }
         }
 
-        //FastFalling();
+        FastFalling();
 
     }
 
@@ -188,9 +188,10 @@ public class MainCharacterController : MonoBehaviour
         scoreText.text = "Score: " + score.ToString();
     }
 
-   /* private void FastFalling()
+   private void FastFalling()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        
+        if(xbox.PlayerMovement.FastFall.triggered)
         {
              vertical = vertical * 2;
 
@@ -199,13 +200,13 @@ public class MainCharacterController : MonoBehaviour
             Debug.Log("Increasing Gravity");
         }
 
-        if(Input.GetKeyUp(KeyCode.DownArrow))
+        if(!xbox.PlayerMovement.FastFall.triggered)
         {
             vertical = vertical / 2;
             //rd2d.gravityScale = defaultGravity;
              Debug.Log("Stopped increasing Gravity");
         }
-    } */
+    } 
 
     public void PlaySound(AudioClip clip)
     {
