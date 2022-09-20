@@ -485,16 +485,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 220899918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &220899920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4997,29 +5005,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: fullHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: 14745031792f31a49af759c36a61b0a2, type: 3}
-    - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1169931662}
-    - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: livesText
-      value: 
-      objectReference: {fileID: 1167373348}
-    - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: emptyHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: 6d44ff51a6925534182632cdd0713834, type: 3}
-    - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: numOfHearts
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: hearts.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 609435460, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
@@ -5032,26 +5020,6 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 1467117128}
-    - target: {fileID: 1008580986568052533, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008580986568052533, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 1517dfc5db776d0458abd5954780852e, type: 2}
-    - target: {fileID: 2972452475673156743, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140624174121580253, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140624174121580253, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: scoreText
       value: 
@@ -5060,10 +5028,6 @@ PrefabInstance:
       propertyPath: levelLoader
       value: 
       objectReference: {fileID: 1245662855}
-    - target: {fileID: 6775379244740075168, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: startForce.x
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6775379244740075171, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5111,10 +5075,6 @@ PrefabInstance:
     - target: {fileID: 6775379244740075173, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
       propertyPath: m_Name
       value: Main Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 8829138963014900475, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a117fde316cf9f64792e6fb2d04b4171, type: 3}

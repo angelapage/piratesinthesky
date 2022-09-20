@@ -52,6 +52,23 @@ public class MainCharacterController : MonoBehaviour
 
     private LevelLoader _levelLoader;
     bool boing;
+
+    private XboxControls xbox;
+
+    private void Awake()
+    {
+        xbox = new XboxControls();
+    }
+
+    private void OnEnable()
+    {
+        xbox.Enable();
+    }
+     private void OnDisable()
+    {
+        xbox.Disable();
+    }
+    
     
     void Start()
     {
@@ -65,23 +82,18 @@ public class MainCharacterController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         scoreText.text = "Score: " + score.ToString();
+        
     }
 
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = rd2d.velocity.y;
+        //horizontal = Input.GetAxis("Horizontal");
+       //vertical = rd2d.velocity.y;
         lastVelocity = rd2d.velocity;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(xbox.PlayerMovement.Attack.triggered)
         {
-            HitBox.SetActive(true);
-
-            HitBoxAttack a = GetComponentInChildren<HitBoxAttack>();
-
-            a.Attack();
-            attacking = true;
-
+            PlayerAttack();
         }
 
         if (isInvincible == true)
@@ -102,7 +114,7 @@ public class MainCharacterController : MonoBehaviour
             }
         }
 
-        FastFalling();
+        //FastFalling();
 
     }
 
@@ -111,8 +123,9 @@ public class MainCharacterController : MonoBehaviour
         if (boing == false)
         {
         if (isDisabled == false)
-        {
-            rd2d.velocity = new Vector2(horizontal * speed, vertical);
+        {   
+            Vector2 move = xbox.PlayerMovement.Move.ReadValue<Vector2>();
+            rd2d.velocity = new Vector2(move.x * speed, rd2d.velocity.y);
         }
         
         rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
@@ -175,7 +188,7 @@ public class MainCharacterController : MonoBehaviour
         scoreText.text = "Score: " + score.ToString();
     }
 
-    private void FastFalling()
+   /* private void FastFalling()
     {
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -192,7 +205,7 @@ public class MainCharacterController : MonoBehaviour
             //rd2d.gravityScale = defaultGravity;
              Debug.Log("Stopped increasing Gravity");
         }
-    }
+    } */
 
     public void PlaySound(AudioClip clip)
     {
@@ -211,5 +224,13 @@ public class MainCharacterController : MonoBehaviour
     public void endattack()
     {
         attacking = false;
+    }
+
+    void PlayerAttack()
+    {
+        HitBox.SetActive(true);
+        HitBoxAttack a = GetComponentInChildren<HitBoxAttack>();
+        a.Attack();
+        attacking = true;
     }
 }

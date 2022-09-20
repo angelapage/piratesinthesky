@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 936810630104368078}
   - component: {fileID: 9123403883631282411}
   - component: {fileID: 3604278611642889855}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HitBoxPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   HitBox: {fileID: 8829138963014900475}
   attacking: 0
-  levelLoader: {fileID: 2815894074772417054, guid: 589e805daf7bb054193a3919455585df, type: 3}
+  levelLoader: {fileID: 0}
 --- !u!50 &4140624174121580253
 Rigidbody2D:
   serializedVersion: 4
@@ -262,9 +262,9 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6775379244740075173}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1517dfc5db776d0458abd5954780852e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -390,10 +390,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
-  numOfHearts: 0
-  hearts: []
-  fullHeart: {fileID: 0}
-  emptyHeart: {fileID: 0}
+  numOfHearts: 3
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: 14745031792f31a49af759c36a61b0a2, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 6d44ff51a6925534182632cdd0713834, type: 3}
   healthBar: {fileID: 0}
 --- !u!1 &8829138963014900475
 GameObject:

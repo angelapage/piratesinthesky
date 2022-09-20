@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    private XboxControls xbox;
+
+    private void Awake()
+    {
+        xbox = new XboxControls();
+    }
+
+    private void OnEnable()
+    {
+        xbox.Enable();
+    }
+    private void OnDisable()
+    {
+        xbox.Disable();
+    }
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.E)) && !isPaused)
+        if(xbox.PlayerMovement.Pause.triggered && !isPaused)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
@@ -15,7 +30,7 @@ public class PauseMenu : MonoBehaviour
             AudioListener.pause = true;
         }    
         
-        else if((Input.GetKeyDown(KeyCode.E)) && isPaused)
+        else if(xbox.PlayerMovement.Pause.triggered && isPaused)
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
