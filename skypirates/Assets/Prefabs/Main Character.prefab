@@ -224,8 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  bounce: 5
-  stagger: 5
+  bounce: 8
+  stagger: 3
   increaseGravity: 0.5
   maxVelocity: 15
   pickup: {fileID: 8300000, guid: a80c96796aa484449b01df02aa1233c1, type: 3}
