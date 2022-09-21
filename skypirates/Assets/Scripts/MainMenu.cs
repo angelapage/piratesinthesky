@@ -1,17 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class MainMenu : MonoBehaviour
 {
   AudioSource audioSource;
   public AudioClip buttonclick;
 
-void Start()
-{
-  audioSource = GetComponent<AudioSource>();
-}
+  public Button startButton;
+  public Button ctrlBackButton;
+  public Button credBackButton;
+
+  void Start()
+  {
+    audioSource = GetComponent<AudioSource>();
+  }
   public void StartGame()
   {
     audioSource.PlayOneShot(buttonclick);
@@ -30,6 +34,8 @@ void Start()
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(true);
     creditsScreen.SetActive(false);
+
+    ctrlBackButton.Select();
   }
 
   public void SeeCredits()
@@ -38,6 +44,8 @@ void Start()
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(false);
     creditsScreen.SetActive(true);
+
+    credBackButton.Select();
   }
 
   public void GoBack()
@@ -46,6 +54,8 @@ void Start()
     mainMenuScreen.SetActive(true);
     ctrlsScreen.SetActive(false);
     creditsScreen.SetActive(false);
+
+    startButton.Select();
   }
 
   [SerializeField]
