@@ -52,6 +52,7 @@ public class MainCharacterController : MonoBehaviour
 
     private LevelLoader _levelLoader;
     bool boing;
+    bool speedfall;
 
     private XboxControls xbox;
 
@@ -198,6 +199,7 @@ public class MainCharacterController : MonoBehaviour
             //rd2d.AddForce(-transform.up * bounce, ForceMode2D.Impulse);
             //rd2d.gravityScale = increaseGravity;
             Debug.Log("Increasing Gravity");
+            speedfall = true;
         }
 
         if(!xbox.PlayerMovement.FastFall.triggered)
@@ -205,6 +207,7 @@ public class MainCharacterController : MonoBehaviour
             vertical = vertical / 2;
             //rd2d.gravityScale = defaultGravity;
              Debug.Log("Stopped increasing Gravity");
+             speedfall = false;
         }
     } 
 
@@ -218,7 +221,14 @@ public class MainCharacterController : MonoBehaviour
         boing = true;
         Debug.Log("smack");
         rd2d.velocity = new Vector2(0, 0); 
+        if (speedfall == false)
+        {
         rd2d.AddForce(transform.up * bounce, ForceMode2D.Impulse);
+        }
+        if (speedfall == true)
+        {
+        rd2d.AddForce(transform.up * bounce * 1.2f, ForceMode2D.Impulse);
+        }
         boing = false;
     }
 
