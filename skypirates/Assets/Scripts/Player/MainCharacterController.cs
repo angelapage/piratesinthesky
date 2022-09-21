@@ -122,11 +122,11 @@ public class MainCharacterController : MonoBehaviour
     {
         if (boing == false)
         {
-        if (isDisabled == false)
-        {   
-            Vector2 move = xbox.PlayerMovement.Move.ReadValue<Vector2>();
-            rd2d.velocity = new Vector2(move.x * speed, rd2d.velocity.y);
-        }
+            if (isDisabled == false)
+            {   
+                Vector2 move = xbox.PlayerMovement.Move.ReadValue<Vector2>();
+                rd2d.velocity = new Vector2(move.x * speed, rd2d.velocity.y);
+            }
         
         rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
         }
