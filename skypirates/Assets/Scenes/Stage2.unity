@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &33998897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3061422793357771484, guid: 5d865b8deec163841ac25cbb3c74f3a4, type: 3}
+  m_PrefabInstance: {fileID: 476506597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &38298172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3247,9 +3252,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2815894074772417040, guid: 589e805daf7bb054193a3919455585df, type: 3}
+      propertyPath: newArt
+      value: 
+      objectReference: {fileID: 21300000, guid: 8632b3d7a65d2304e9d7c2f2b1743962, type: 3}
+    - target: {fileID: 2815894074772417040, guid: 589e805daf7bb054193a3919455585df, type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 1101048753}
+    - target: {fileID: 2815894074772417040, guid: 589e805daf7bb054193a3919455585df, type: 3}
+      propertyPath: screenSwiper
+      value: 
+      objectReference: {fileID: 33998897}
     - target: {fileID: 2815894074772417043, guid: 589e805daf7bb054193a3919455585df, type: 3}
       propertyPath: m_RootOrder
       value: 17

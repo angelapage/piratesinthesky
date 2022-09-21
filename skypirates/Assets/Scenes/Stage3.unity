@@ -4926,6 +4926,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1156950730}
     m_Modifications:
+    - target: {fileID: 3061422793357771474, guid: 5d865b8deec163841ac25cbb3c74f3a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8632b3d7a65d2304e9d7c2f2b1743962, type: 3}
     - target: {fileID: 3061422793357771484, guid: 5d865b8deec163841ac25cbb3c74f3a4, type: 3}
       propertyPath: m_Name
       value: ScreenSwipe
@@ -5016,6 +5020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d865b8deec163841ac25cbb3c74f3a4, type: 3}
+--- !u!1 &1677670121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3061422793357771484, guid: 5d865b8deec163841ac25cbb3c74f3a4, type: 3}
+  m_PrefabInstance: {fileID: 1677670120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706042002
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,9 +5108,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2815894074772417040, guid: 589e805daf7bb054193a3919455585df, type: 3}
+      propertyPath: newArt
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b61883abc1626a4e964303f3bf936af, type: 3}
+    - target: {fileID: 2815894074772417040, guid: 589e805daf7bb054193a3919455585df, type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 1390023402}
+    - target: {fileID: 2815894074772417040, guid: 589e805daf7bb054193a3919455585df, type: 3}
+      propertyPath: screenSwiper
+      value: 
+      objectReference: {fileID: 1677670121}
     - target: {fileID: 2815894074772417043, guid: 589e805daf7bb054193a3919455585df, type: 3}
       propertyPath: m_RootOrder
       value: 18
