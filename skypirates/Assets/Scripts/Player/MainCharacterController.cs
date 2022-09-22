@@ -129,7 +129,23 @@ public class MainCharacterController : MonoBehaviour
                 rd2d.velocity = new Vector2(move.x * speed, rd2d.velocity.y);
             }
         
-        rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
+            rd2d.velocity = Vector2.ClampMagnitude(rd2d.velocity, maxVelocity);
+
+            if (rd2d.velocity.y > 0)
+            {
+                SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
+
+                s.UpAnimation();
+
+            }
+
+            if (rd2d.velocity.y <= 0)
+            {
+                SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
+
+                s.DownAnimation();
+
+            }
         }
     }
 
