@@ -10,13 +10,11 @@ public class EnemyBird : Enemy
     public int direction = 1;
     public float speed = 8;
     
-    // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         directionTimer -= Time.deltaTime;
@@ -40,6 +38,4 @@ public class EnemyBird : Enemy
 
         rigid.MovePosition(position);
     }
-
-
 }

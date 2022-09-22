@@ -18,6 +18,12 @@ public class Restart : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+     public void Title()
+  {
+        audioSource.PlayOneShot(buttonclick);
+        SceneManager.LoadScene(0);
+  }
+
      public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);

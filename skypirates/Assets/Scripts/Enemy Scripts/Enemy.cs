@@ -7,20 +7,19 @@ public class Enemy : MonoBehaviour
     float health = 100;
     public float damage;
 
+    AudioSource audioSource;
+    public AudioClip splat;
+
     private MainCharacterController mainCharacterController;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         GameObject mainCharacterControllerObject = GameObject.FindWithTag("MainCharacterController");
         if (mainCharacterControllerObject != null)
         {
             mainCharacterController = mainCharacterControllerObject.GetComponent<MainCharacterController>();
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     public void Damaged()
@@ -29,12 +28,18 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            PlaySound(splat);
+            Destroy(gameObject,.15f);
 
             if (mainCharacterController != null)
             {
                 mainCharacterController.ChangeScore(50);
             }
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

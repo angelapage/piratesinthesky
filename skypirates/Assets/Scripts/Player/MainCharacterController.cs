@@ -28,6 +28,8 @@ public class MainCharacterController : MonoBehaviour
     
     AudioSource audioSource;
     public AudioClip pickup;
+    public AudioClip hurt;
+    public AudioClip attack;
     public AudioClip bubblepop;
 
 
@@ -163,6 +165,7 @@ public class MainCharacterController : MonoBehaviour
     {
         if (collision.tag == "Bumper")
         {
+            PlaySound(bubblepop);
             isDisabled = true;
         }
 
@@ -185,6 +188,7 @@ public class MainCharacterController : MonoBehaviour
             {
                 if (attacking == false)
                 {
+                    PlaySound(hurt);
                     health.ChangeHealth(-1);
 
                     rd2d.velocity = new Vector2(horizontal, vertical + stagger);
@@ -193,9 +197,6 @@ public class MainCharacterController : MonoBehaviour
                     invincibleTimer = timeInvincible;
                 }
             }
-
-            PlaySound(bubblepop);
-
         } 
     }
 
@@ -258,6 +259,7 @@ public class MainCharacterController : MonoBehaviour
         HitBox.SetActive(true);
         HitBoxAttack a = GetComponentInChildren<HitBoxAttack>();
         a.Attack();
+        PlaySound(attack);
         attacking = true;
     }
 }

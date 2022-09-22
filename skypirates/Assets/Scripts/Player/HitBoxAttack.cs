@@ -7,11 +7,6 @@ public class HitBoxAttack : MonoBehaviour
     public GameObject Self;
     float activeTimer = 1f;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         activeTimer -= Time.deltaTime;
@@ -24,8 +19,7 @@ public class HitBoxAttack : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        
+    {     
         Enemy e = other.GetComponent<Enemy>();
         HitPoint h = other.GetComponent<HitPoint>();
         MainCharacterController c = GetComponentInParent<MainCharacterController>();
@@ -33,8 +27,7 @@ public class HitBoxAttack : MonoBehaviour
         if (e != null)
         {
             c.BounceUp();
-            e.Damaged();
-            
+            e.Damaged();     
         }
         
         if (h != null)

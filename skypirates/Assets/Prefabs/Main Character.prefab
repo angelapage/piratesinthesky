@@ -230,6 +230,8 @@ MonoBehaviour:
   increaseGravity: 0.5
   maxVelocity: 15
   pickup: {fileID: 8300000, guid: a80c96796aa484449b01df02aa1233c1, type: 3}
+  hurt: {fileID: 8300000, guid: 49fa7f5086d9351428d6655a54acf72c, type: 3}
+  attack: {fileID: 8300000, guid: 38aa5c7b460cc884c99d5c98ed9e9b83, type: 3}
   bubblepop: {fileID: 8300000, guid: 7cab1f7ccd33c7c4896deda3a8184503, type: 3}
   scoreText: {fileID: 0}
   HitBox: {fileID: 8829138963014900475}
@@ -297,7 +299,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
