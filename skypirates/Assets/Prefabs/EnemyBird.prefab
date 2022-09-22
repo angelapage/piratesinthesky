@@ -145,8 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39741ea2e0f3cb54e829cce5cb1eacc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   damage: 100
-  splat: {fileID: 8300000, guid: 3d5a9d9cdda3603429cda00d50562d0e, type: 3}
+  deathnoise: {fileID: 0}
+  splat: {fileID: 8711478590261762568, guid: d3fe03bb63f51874db246f1fc054172d, type: 3}
   direction: 1
   speed: 8
 --- !u!82 &5468185203013491497

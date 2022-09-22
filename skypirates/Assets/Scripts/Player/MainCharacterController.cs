@@ -31,6 +31,9 @@ public class MainCharacterController : MonoBehaviour
     public AudioClip hurt;
     public AudioClip attack;
     public AudioClip bubblepop;
+    public AudioClip splat;
+    
+
 
 
     public Text scoreText;
@@ -116,6 +119,7 @@ public class MainCharacterController : MonoBehaviour
                 isDisabled = false;
             }
         }
+       
 
         FastFalling();
 
@@ -237,6 +241,7 @@ public class MainCharacterController : MonoBehaviour
     {
         boing = true;
         Debug.Log("smack");
+        
         rd2d.velocity = new Vector2(0, 0); 
         if (speedfall == false)
         {
@@ -262,4 +267,5 @@ public class MainCharacterController : MonoBehaviour
         PlaySound(attack);
         attacking = true;
     }
+   
 }

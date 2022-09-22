@@ -233,6 +233,7 @@ MonoBehaviour:
   hurt: {fileID: 8300000, guid: 49fa7f5086d9351428d6655a54acf72c, type: 3}
   attack: {fileID: 8300000, guid: 38aa5c7b460cc884c99d5c98ed9e9b83, type: 3}
   bubblepop: {fileID: 8300000, guid: 7cab1f7ccd33c7c4896deda3a8184503, type: 3}
+  splat: {fileID: 8300000, guid: 3d5a9d9cdda3603429cda00d50562d0e, type: 3}
   scoreText: {fileID: 0}
   HitBox: {fileID: 8829138963014900475}
   attacking: 0

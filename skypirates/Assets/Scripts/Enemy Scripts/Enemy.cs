@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    float health = 100;
+    public float health = 100;
     public float damage;
-
-    AudioSource audioSource;
-    public AudioClip splat;
-
+    public GameObject splat;
     private MainCharacterController mainCharacterController;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+    
         GameObject mainCharacterControllerObject = GameObject.FindWithTag("MainCharacterController");
         if (mainCharacterControllerObject != null)
         {
@@ -25,21 +22,17 @@ public class Enemy : MonoBehaviour
     public void Damaged()
     {
         health -= damage;
-
         if (health <= 0)
         {
-            PlaySound(splat);
-            Destroy(gameObject,.15f);
+            
 
             if (mainCharacterController != null)
             {
                 mainCharacterController.ChangeScore(50);
             }
+             Instantiate(splat);
+            Destroy(gameObject);
         }
     }
 
-    public void PlaySound(AudioClip clip)
-    {
-        audioSource.PlayOneShot(clip);
-    }
 }
