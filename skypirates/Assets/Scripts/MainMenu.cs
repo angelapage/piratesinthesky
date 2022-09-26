@@ -8,13 +8,14 @@ public class MainMenu : MonoBehaviour
   AudioSource audioSource;
   public AudioClip buttonclick;
 
-  public Button startButton;
-  public Button ctrlBackButton;
-  public Button credBackButton;
+  public Button startButton = null;
+  public Button ctrlBackButton = null;
+  public Button credBackButton = null;
 
   void Start()
   {
     audioSource = GetComponent<AudioSource>();
+    startButton.Select();
   }
   public void StartGame()
   {
@@ -59,5 +60,5 @@ public class MainMenu : MonoBehaviour
   }
 
   [SerializeField]
-  GameObject mainMenuScreen, ctrlsScreen, creditsScreen;
+  GameObject mainMenuScreen = null, ctrlsScreen = null, creditsScreen = null;
 }

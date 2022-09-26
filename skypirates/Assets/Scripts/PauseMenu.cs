@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     private XboxControls xbox;
+    [SerializeField]
+    private Button backBtn = null;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class PauseMenu : MonoBehaviour
         if(xbox.PlayerMovement.Pause.triggered && !isPaused)
         {
             pauseMenu.SetActive(true);
+            backBtn.Select();
             Time.timeScale = 0;
             isPaused = true;
 
