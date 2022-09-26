@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1761209762}
+  m_FirstSelected: {fileID: 7952687416370351823}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &220899921
@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0013437271, y: -4.7431774, z: -10}
+  m_LocalPosition: {x: -0.0012254715, y: -4.7420177, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3393,11 +3393,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 172181515251722874, guid: 9e151cb1e922e50418216b2623f5cc20, type: 3}
   m_PrefabInstance: {fileID: 1712451175}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1761209762 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1003183311479353482, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
-  m_PrefabInstance: {fileID: 7952687416370351822}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1765761252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5072,6 +5067,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1335482673}
+    - target: {fileID: 6006204108643757576, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1335482673}
+    - target: {fileID: 6006204108643757576, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006204108643757576, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Restart, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7952687414685894360, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5166,3 +5173,8 @@ PrefabInstance:
       objectReference: {fileID: 1673648316}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
+--- !u!1 &7952687416370351823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3205109972228180221, guid: ec7ca4fda4f10ff44a6cae31b7a65286, type: 3}
+  m_PrefabInstance: {fileID: 7952687416370351822}
+  m_PrefabAsset: {fileID: 0}

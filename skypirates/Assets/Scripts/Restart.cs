@@ -23,6 +23,7 @@ public class Restart : MonoBehaviour
   {
         audioSource.PlayOneShot(buttonclick);
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
   }
 
      public void PlaySound(AudioClip clip)
