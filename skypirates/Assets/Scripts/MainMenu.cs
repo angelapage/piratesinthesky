@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
 
+  public LevelLoader startLevel = null;
+
   void Start()
   {
     audioSource = GetComponent<AudioSource>();
@@ -20,7 +22,7 @@ public class MainMenu : MonoBehaviour
   public void StartGame()
   {
     audioSource.PlayOneShot(buttonclick);
-    SceneManager.LoadScene(1);
+    startLevel.LoadNextLevel();
   }
 
   public void Quit()
