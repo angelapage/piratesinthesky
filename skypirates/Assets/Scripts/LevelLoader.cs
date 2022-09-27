@@ -18,7 +18,22 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));     
+        if(SceneManager.GetActiveScene().buildIndex != 3)
+        {
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));   
+        }
+        else if(MainCharacterController.score > 5000)
+        {
+            SceneManager.LoadScene("Win");
+        }
+        else if(MainCharacterController.score <5000)
+        {
+            SceneManager.LoadScene("Lose");
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     IEnumerator LoadLevel(int levelIndex)

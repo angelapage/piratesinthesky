@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
   void Start()
   {
     audioSource = GetComponent<AudioSource>();
-    startButton.Select();
+  
   }
   public void StartGame()
   {
