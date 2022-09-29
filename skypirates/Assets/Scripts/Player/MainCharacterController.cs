@@ -32,9 +32,8 @@ public class MainCharacterController : MonoBehaviour
     public AudioClip attack;
     public AudioClip bubblepop;
     public AudioClip splat;
-    
 
-
+    public ParticleSystem damagedParticles;
 
     public Text scoreText;
     public static int score = 0;
@@ -88,7 +87,10 @@ public class MainCharacterController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         scoreText.text = "Score: " + score.ToString();
-        
+
+        damagedParticles = GetComponent<ParticleSystem>();
+
+
     }
 
     void Update()
@@ -199,6 +201,8 @@ public class MainCharacterController : MonoBehaviour
 
                     isInvincible = true;
                     invincibleTimer = timeInvincible;
+
+                    damagedParticles.Play();
                 }
             }
         } 
