@@ -58,6 +58,7 @@ public class MainCharacterController : MonoBehaviour
     private LevelLoader _levelLoader;
     bool boing;
     bool speedfall;
+    bool attackcooldown;
 
     private XboxControls xbox;
 
@@ -106,8 +107,11 @@ public class MainCharacterController : MonoBehaviour
 
         if(xbox.PlayerMovement.Attack.triggered)
         {
+           if(attackcooldown == false)
+           {
             PlayerAttack();
             pirateModel.playAttackAnimation();
+           }
         }
 
         if (isInvincible == true)
@@ -267,6 +271,7 @@ public class MainCharacterController : MonoBehaviour
     public void endattack()
     {
         attacking = false;
+        Invoke("attackreset", 0.5f);
     }
 
     void PlayerAttack()
@@ -276,6 +281,11 @@ public class MainCharacterController : MonoBehaviour
         a.Attack();
         PlaySound(attack);
         attacking = true;
+        attackcooldown = true;
+    }
+    void attackreset()
+    {
+        attackcooldown = false;
     }
    
 }

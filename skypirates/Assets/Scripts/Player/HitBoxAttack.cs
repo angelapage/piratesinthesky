@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitBoxAttack : MonoBehaviour
 {
     public GameObject Self;
-    float activeTimer = 1f;
+    float activeTimer = 0.4f;
 
     void Update()
     {
@@ -38,6 +38,6 @@ public class HitBoxAttack : MonoBehaviour
     }
     public void Attack()
     {
-        activeTimer = 1f;
+        activeTimer = 0.4f;
     }
 }
