@@ -19,6 +19,7 @@ public class Restart : MonoBehaviour
         audioSource.PlayOneShot(buttonclick);
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
      public void Title()
@@ -26,6 +27,7 @@ public class Restart : MonoBehaviour
         audioSource.PlayOneShot(buttonclick);
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
+        AudioListener.pause = false;
   }
 
      public void PlaySound(AudioClip clip)
