@@ -10,6 +10,7 @@ public class MainCharacterController : MonoBehaviour
     private Rigidbody2D rd2d;
     float horizontal;
     float vertical;
+    
 
     public float speed;
     [SerializeField]
@@ -60,6 +61,8 @@ public class MainCharacterController : MonoBehaviour
 
     private XboxControls xbox;
 
+    SkyPirateModel pirateModel;
+
     private void Awake()
     {
         xbox = new XboxControls();
@@ -76,7 +79,7 @@ public class MainCharacterController : MonoBehaviour
     
     
     void Start()
-    {
+    {   
         health = GetComponent<Health>();
         rd2d = GetComponent<Rigidbody2D>();
 
@@ -90,6 +93,8 @@ public class MainCharacterController : MonoBehaviour
 
         damagedParticles = GetComponent<ParticleSystem>();
 
+        pirateModel = GetComponentInChildren<SkyPirateModel>();
+
 
     }
 
@@ -102,6 +107,7 @@ public class MainCharacterController : MonoBehaviour
         if(xbox.PlayerMovement.Attack.triggered)
         {
             PlayerAttack();
+            pirateModel.playAttackAnimation();
         }
 
         if (isInvincible == true)
@@ -141,17 +147,17 @@ public class MainCharacterController : MonoBehaviour
 
             if (rd2d.velocity.y > 0)
             {
-                SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
+                //SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
 
-                s.UpAnimation();
+                //s.UpAnimation();
 
             }
 
             if (rd2d.velocity.y <= 0)
             {
-                SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
+               // SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
 
-                s.DownAnimation();
+                //s.DownAnimation();
 
             }
         }
@@ -223,7 +229,7 @@ public class MainCharacterController : MonoBehaviour
 
             //rd2d.AddForce(-transform.up * bounce, ForceMode2D.Impulse);
             //rd2d.gravityScale = increaseGravity;
-            Debug.Log("Increasing Gravity");
+            //Debug.Log("Increasing Gravity");
             speedfall = true;
         }
 
@@ -231,7 +237,7 @@ public class MainCharacterController : MonoBehaviour
         {
             vertical = vertical / 2;
             //rd2d.gravityScale = defaultGravity;
-             Debug.Log("Stopped increasing Gravity");
+             //Debug.Log("Stopped increasing Gravity");
              speedfall = false;
         }
     } 

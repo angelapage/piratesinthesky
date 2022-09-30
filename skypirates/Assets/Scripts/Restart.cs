@@ -8,6 +8,8 @@ public class Restart : MonoBehaviour
     AudioSource audioSource;
     public AudioClip buttonclick;
 
+    public LevelLoader startLevel = null;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

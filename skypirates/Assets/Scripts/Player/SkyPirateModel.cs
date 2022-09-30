@@ -4,25 +4,14 @@ using UnityEngine;
 
 public class SkyPirateModel : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Animator animator;
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void playAttackAnimation()
     {
-        
-    }
-
-    public void DownAnimation()
-    {
-        //play down animation?
-    }
-
-    public void UpAnimation()
-    {
-        //play up animation?
+        animator.SetTrigger("Attacking");
     }
 }
