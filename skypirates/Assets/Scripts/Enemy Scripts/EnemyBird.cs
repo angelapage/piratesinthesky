@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyBird : Enemy
 {
     Rigidbody2D rigid;
-    float directionTimer;
-    float newTime = 3;
+    public float directionTimer;
+    public float newTime = 3;
     public int direction = 1;
     public float speed = 8;
     
@@ -19,7 +19,7 @@ public class EnemyBird : Enemy
     {
         directionTimer -= Time.deltaTime;
 
-        if (directionTimer < 0)
+        if (directionTimer <= 0)
         {
             direction = -direction;
             directionTimer = newTime;

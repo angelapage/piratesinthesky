@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float damage;
     public GameObject splat;
     private MainCharacterController mainCharacterController;
+    public GameObject armourhit;
 
     void Start()
     {
@@ -22,6 +23,11 @@ public class Enemy : MonoBehaviour
     public void Damaged()
     {
         health -= damage;
+        if (health == 50)
+        {
+            Instantiate(armourhit);
+        }
+        
         if (health <= 0)
         {
             
