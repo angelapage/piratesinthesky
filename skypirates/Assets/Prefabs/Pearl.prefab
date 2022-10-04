@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4898465756111240254}
   - component: {fileID: 4898465756111240255}
   - component: {fileID: 4898465756111240248}
+  - component: {fileID: -13761559167734128}
   m_Layer: 0
   m_Name: Pearl
   m_TagString: Pearl
@@ -132,6 +133,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-13761559167734128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898465756111240249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac94ee030a14f9c4da81d5beadd6c381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &178259795732195561
 PrefabInstance:
   m_ObjectHideFlags: 0

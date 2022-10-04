@@ -148,8 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 50
-  splat: {fileID: 8300000, guid: 3d5a9d9cdda3603429cda00d50562d0e, type: 3}
-  armourhit: {fileID: 8300000, guid: 52cf818a61fb3524691b9fa571a0212b, type: 3}
+  splat: {fileID: 8711478590261762568, guid: d3fe03bb63f51874db246f1fc054172d, type: 3}
+  armourhit: {fileID: 5483550196939089009, guid: 0a812ce53ac24784d919ecdd43a2fe36, type: 3}
+  hitEffect: {fileID: 7513558138132849024, guid: 9f0950ca91e4a81418adb8893f72be28, type: 3}
 --- !u!82 &7299213778616209390
 AudioSource:
   m_ObjectHideFlags: 0

@@ -9,11 +9,12 @@ public class Enemy : MonoBehaviour
     public GameObject splat;
     private MainCharacterController mainCharacterController;
     public GameObject armourhit;
+    public GameObject hitEffect;
 
     void Start()
     {
-    
         GameObject mainCharacterControllerObject = GameObject.FindWithTag("MainCharacterController");
+
         if (mainCharacterControllerObject != null)
         {
             mainCharacterController = mainCharacterControllerObject.GetComponent<MainCharacterController>();
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     public void Damaged()
     {
         health -= damage;
+
         if (health == 50)
         {
             Instantiate(armourhit);
@@ -30,15 +32,15 @@ public class Enemy : MonoBehaviour
         
         if (health <= 0)
         {
-            
-
             if (mainCharacterController != null)
             {
                 mainCharacterController.ChangeScore(50);
             }
-             Instantiate(splat);
+            
+            Instantiate(splat);
             Destroy(gameObject);
         }
-    }
 
+        Instantiate(hitEffect, transform.position, transform.rotation);
+    }
 }

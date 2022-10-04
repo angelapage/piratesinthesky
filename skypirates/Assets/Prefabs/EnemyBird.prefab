@@ -149,6 +149,10 @@ MonoBehaviour:
   health: 100
   damage: 100
   splat: {fileID: 8711478590261762568, guid: d3fe03bb63f51874db246f1fc054172d, type: 3}
+  armourhit: {fileID: 0}
+  hitEffect: {fileID: 7513558138132849024, guid: b9cd5f5b402b4274b95c4f17b386d11e, type: 3}
+  directionTimer: 0
+  newTime: 3
   direction: 1
   speed: 8
 --- !u!82 &5468185203013491497
