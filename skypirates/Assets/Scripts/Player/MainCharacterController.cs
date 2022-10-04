@@ -42,7 +42,7 @@ public class MainCharacterController : MonoBehaviour
     public GameObject HitBox;
 
     float invincibleTimer;
-    float timeInvincible = 1;
+    float timeInvincible = 2;
     bool isInvincible;
 
     float disableInput;
@@ -95,8 +95,6 @@ public class MainCharacterController : MonoBehaviour
         damagedParticles = GetComponent<ParticleSystem>();
 
         pirateModel = GetComponentInChildren<SkyPirateModel>();
-
-
     }
 
     void Update()
@@ -131,7 +129,6 @@ public class MainCharacterController : MonoBehaviour
                 isDisabled = false;
             }
         }
-       
 
         FastFalling();
 
@@ -204,15 +201,17 @@ public class MainCharacterController : MonoBehaviour
             {
                 if (attacking == false)
                 {
-                    PlaySound(hurt);
-                    health.ChangeHealth(-1);
+                    SkyPirateModel s = GetComponentInChildren<SkyPirateModel>();
 
                     rd2d.velocity = new Vector2(horizontal, vertical + stagger);
-
+                    health.ChangeHealth(-1);
                     isInvincible = true;
                     invincibleTimer = timeInvincible;
-
                     damagedParticles.Play();
+                    PlaySound(hurt);
+
+                    s.isInvincible = true;
+                    s.invincibleTimer = s.timeInvincible;
                 }
             }
         } 
