@@ -49,6 +49,14 @@ public class @XboxControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""a831f7be-efd4-46e7-a1ca-644aff03477e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -172,6 +180,17 @@ public class @XboxControls : IInputActionCollection, IDisposable
                     ""action"": ""FastFall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4279bc41-116f-426a-9731-45cb82b06a95"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -184,6 +203,7 @@ public class @XboxControls : IInputActionCollection, IDisposable
         m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
         m_PlayerMovement_FastFall = m_PlayerMovement.FindAction("FastFall", throwIfNotFound: true);
+        m_PlayerMovement_Select = m_PlayerMovement.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -237,6 +257,7 @@ public class @XboxControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovement_Attack;
     private readonly InputAction m_PlayerMovement_Pause;
     private readonly InputAction m_PlayerMovement_FastFall;
+    private readonly InputAction m_PlayerMovement_Select;
     public struct PlayerMovementActions
     {
         private @XboxControls m_Wrapper;
@@ -245,6 +266,7 @@ public class @XboxControls : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
         public InputAction @FastFall => m_Wrapper.m_PlayerMovement_FastFall;
+        public InputAction @Select => m_Wrapper.m_PlayerMovement_Select;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -266,6 +288,9 @@ public class @XboxControls : IInputActionCollection, IDisposable
                 @FastFall.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnFastFall;
                 @FastFall.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnFastFall;
                 @FastFall.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnFastFall;
+                @Select.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSelect;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -282,6 +307,9 @@ public class @XboxControls : IInputActionCollection, IDisposable
                 @FastFall.started += instance.OnFastFall;
                 @FastFall.performed += instance.OnFastFall;
                 @FastFall.canceled += instance.OnFastFall;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
@@ -292,5 +320,6 @@ public class @XboxControls : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnFastFall(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
