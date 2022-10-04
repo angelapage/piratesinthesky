@@ -194,7 +194,7 @@ public class MainCharacterController : MonoBehaviour
         {
             PlaySound(pickup);
             score += 100;
-            scoreText.text = "Score" + score.ToString();
+            scoreText.text = "Score: " + score.ToString();
             Destroy(collision.gameObject);
         }
 

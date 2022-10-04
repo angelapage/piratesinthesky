@@ -20,6 +20,7 @@ public class Restart : MonoBehaviour
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
         AudioListener.pause = false;
+        MainCharacterController.score = 0;
     }
 
      public void Title()
@@ -28,6 +29,7 @@ public class Restart : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
         AudioListener.pause = false;
+        MainCharacterController.score = 0;
   }
 
      public void PlaySound(AudioClip clip)
