@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PearlScript : MonoBehaviour
 {
+    public GameObject collectEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,11 @@ public class PearlScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Collected()
+    {
+        Instantiate(collectEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

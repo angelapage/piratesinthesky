@@ -189,10 +189,12 @@ public class MainCharacterController : MonoBehaviour
 
         if (collision.tag == "Pearl")
         {
+            PearlScript p = collision.GetComponent<PearlScript>();
+
             PlaySound(pickup);
             score += 100;
             scoreText.text = "Score: " + score.ToString();
-            Destroy(collision.gameObject);
+            p.Collected();
         }
 
         if (collision.tag == "Enemy")

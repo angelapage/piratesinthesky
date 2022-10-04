@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac94ee030a14f9c4da81d5beadd6c381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectEffect: {fileID: 7513558138132849024, guid: fc159da400f1f43498e9fad5efb030df, type: 3}
 --- !u!1001 &178259795732195561
 PrefabInstance:
   m_ObjectHideFlags: 0
