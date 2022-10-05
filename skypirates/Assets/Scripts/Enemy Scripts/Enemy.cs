@@ -37,10 +37,12 @@ public class Enemy : MonoBehaviour
                 mainCharacterController.ChangeScore(50);
             }
             
-            Instantiate(splat);
+            Instantiate(splat, transform.position, transform.rotation);
+            
             Destroy(gameObject);
+        
         }
 
-        Instantiate(hitEffect, transform.position, transform.rotation);
+
     }
 }

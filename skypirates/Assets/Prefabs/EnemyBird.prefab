@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 100
-  splat: {fileID: 8711478590261762568, guid: d3fe03bb63f51874db246f1fc054172d, type: 3}
+  splat: {fileID: 5008103361723971313, guid: 0db629ad06746ff4291c595382eabcd5, type: 3}
   armourhit: {fileID: 0}
   hitEffect: {fileID: 7513558138132849024, guid: b9cd5f5b402b4274b95c4f17b386d11e, type: 3}
   directionTimer: 0

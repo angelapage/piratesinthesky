@@ -7,7 +7,7 @@ public class deathnoise : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Destroy(gameObject , 0.4f);
+        Destroy(gameObject , 0.5f);
     }
 
 }
