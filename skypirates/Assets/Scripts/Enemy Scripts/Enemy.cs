@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public void Damaged()
     {
         health -= damage;
+        
 
         if (health == 50)
         {
@@ -32,11 +33,7 @@ public class Enemy : MonoBehaviour
         
         if (health <= 0)
         {
-            if (mainCharacterController != null)
-            {
-                mainCharacterController.ChangeScore(50);
-            }
-            
+        
             Instantiate(splat, transform.position, transform.rotation);
             
             Destroy(gameObject);

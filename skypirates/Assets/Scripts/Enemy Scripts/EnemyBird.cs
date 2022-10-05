@@ -13,6 +13,7 @@ public class EnemyBird : Enemy
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        
     }
 
     void Update()
